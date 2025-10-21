@@ -55,7 +55,7 @@ export default function NoteDetail() {
   return (
     <LinearGradient colors={['#0F0F23', '#1E1B4B']} style={styles.container}>
       <ScrollView style={styles.scrollView}>
-        <Title style={styles.title}>{note.title}</Title>
+        {/* <Title style={styles.title}>{note.title}</Title> */}
 
         <TextInput
           value={title}

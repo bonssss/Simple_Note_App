@@ -4,6 +4,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNotes } from '../../hooks/useNotes';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useState } from 'react';
+import { Stack } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Settings() {
   const { notes, clearAllNotes } = useNotes();
@@ -28,52 +30,58 @@ export default function Settings() {
   };
 
   return (
-    <LinearGradient colors={['#0F0F23', '#1E1B4B']} style={styles.container}>
-      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
-        <Title style={styles.header}>Settings</Title>
+    <>
+      <Stack.Screen options={{ headerShown: true}} />
 
-        {/* Appearance & Theme */}
-        <Card style={styles.card}>
-          <Card.Content>
-            <List.Item
-              title="Dark Mode"
-              description="Switch between dark & light theme"
-              left={() => <List.Icon icon="brightness-6" color="#6366F1" />}
-              right={() => <Switch value={darkMode} onValueChange={setDarkMode} />}
-            />
-            <List.Item
-              title="Export Notes"
-              description="Backup to cloud"
-              left={() => <List.Icon icon="cloud-download" color="#10B981" />}
-              onPress={() => Alert.alert('Coming Soon', 'Export feature in development!')}
-            />
-          </Card.Content>
-        </Card>
+      <LinearGradient colors={['#0F0F23', '#1E1B4B']} style={styles.container}>
+        <SafeAreaView style={{ flex: 1 }}>
+          <ScrollView contentContainerStyle={{ paddingBottom: 40, paddingHorizontal: 20 }}>
+            {/* <Title style={styles.header}>Settings</Title> */}
 
-        {/* Data Management */}
-        <Card style={styles.card}>
-          <Card.Content>
-            <List.Item
-              title="Clear All Notes"
-              description={`Delete ${notes.length} notes`}
-              left={() => <List.Icon icon="delete-sweep" color="#EF4444" />}
-              onPress={clearAll}
-            />
-          </Card.Content>
-        </Card>
+            {/* Appearance & Theme */}
+            <Card style={styles.card}>
+              <Card.Content>
+                <List.Item
+                  title="Dark Mode"
+                  description="Switch between dark & light theme"
+                  left={() => <List.Icon icon="brightness-6" color="#6366F1" />}
+                  right={() => <Switch value={darkMode} onValueChange={setDarkMode} />}
+                />
+                <List.Item
+                  title="Export Notes"
+                  description="Backup to cloud"
+                  left={() => <List.Icon icon="cloud-download" color="#10B981" />}
+                  onPress={() => Alert.alert('Coming Soon', 'Export feature in development!')}
+                />
+              </Card.Content>
+            </Card>
 
-        {/* Footer */}
-        <View style={styles.footer}>
-          <Ionicons name="heart" size={20} color="#EF4444" />
-          <Paragraph style={styles.footerText}>Notes App v1.0 | Made with ❤️</Paragraph>
-        </View>
-      </ScrollView>
-    </LinearGradient>
+            {/* Data Management */}
+            <Card style={styles.card}>
+              <Card.Content>
+                <List.Item
+                  title="Clear All Notes"
+                  description={`Delete ${notes.length} notes`}
+                  left={() => <List.Icon icon="delete-sweep" color="#EF4444" />}
+                  onPress={clearAll}
+                />
+              </Card.Content>
+            </Card>
+
+            {/* Footer */}
+            <View style={styles.footer}>
+              <Ionicons name="heart" size={20} color="#EF4444" />
+              <Paragraph style={styles.footerText}>Notes App v1.0 | Made with ❤️</Paragraph>
+            </View>
+          </ScrollView>
+        </SafeAreaView>
+      </LinearGradient>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20 },
+  container: { flex: 1 },
   header: { fontSize: 28, color: '#FFFFFF', marginBottom: 24, fontWeight: 'bold' },
   card: {
     marginBottom: 16,
