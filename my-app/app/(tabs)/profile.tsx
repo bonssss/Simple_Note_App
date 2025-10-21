@@ -7,7 +7,7 @@ import { Stack } from "expo-router";
 export default function ProfileScreen() {
   return (
     <>
-    <Stack.Screen options={{headerShown:false}} />
+    <Stack.Screen options={{headerShown:true}} />
     <LinearGradient colors={['#0F0F23', '#1E1B4B']} style={styles.container}>
       <View style={styles.profileCard}>
         <Ionicons name="person-circle-outline" size={120} color="#6366F1" />

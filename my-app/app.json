@@ -10,7 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "icon":{
+      "icon": {
         "light": "./assets/images/appstore.png",
         "dark": "./assets/images/appstore.png"
       }
@@ -43,7 +43,8 @@
             "image": "./assets/images/playstore.png"
           }
         }
-      ]
+      ],
+      "expo-sqlite"
     ],
     "experiments": {
       "typedRoutes": true,

@@ -6,7 +6,6 @@ import { View } from 'react-native'; // Add this import for wrapping
 import { MD3DarkTheme } from 'react-native-paper';
 import { NotesProvider } from '@/hooks/NotesContext';
 
-
 const theme = {
   ...MD3DarkTheme,
   colors: {
